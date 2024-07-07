@@ -1,3 +1,6 @@
+![image](https://github.com/Seb70197/Weather_Prediction/assets/100205998/6f02b10e-7c87-4322-b3d7-eb7416e56790)
+
+
 # WEATHER PREDICTION, CLIMATE CHANGE IMPACT & THE ROLE OF THE HUMANITY ON THE WEATHER
 
 - __Introduction__ :
