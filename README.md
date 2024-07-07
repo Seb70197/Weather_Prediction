@@ -22,6 +22,7 @@ The Data used for this analysis and prediction are coming from 2 differents sour
     - CO2 emission as well as the energy data are coming from the database of [Our World in Data.](https://ourworldindata.org/)
     - We will limit the investigation and utilization of the data by starting with the year 1970 (decision taken out of the EDA and due to data presence)
 <br>
+
 - __Measures__ :
 Within the application, I created a machine learning model based on RandomForestRegression to show the temperature evolution.
 
