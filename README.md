@@ -36,6 +36,20 @@ Within the application, I created a machine learning model based on RandomForest
 Make sure all the necessary python package are installed within your machine.
 Start with the console and run the run.py application. This should automatically start the webpage with the visualization.
 
+IMPORTANT : The Database created from the parquet file needs first to be downloaded from my Kaggle Dataset collection under the following address :
+https://www.kaggle.com/datasets/sebstutt/weather-data
+
+You have here 2 possibilities :
+1. Download directly the weather_data.db and extract it under the Data folder
+
+   ![image](https://github.com/Seb70197/Weather_Prediction/assets/100205998/32619e4a-d2a9-4175-86fc-cc96b143fee7)
+
+2. Download only the parquet file, save it under the data folder and run, before running the application run.py the python script data_prer.py.
+   
+![image](https://github.com/Seb70197/Weather_Prediction/assets/100205998/19f07995-b396-46f6-868f-a0840aa62024)
+
+
+
 ## UTILIZATION
 
 The WebPage contains following elements :
@@ -46,6 +60,8 @@ The WebPage contains following elements :
 All within the period between 1970 to 2022.
 
 The user is having the possibility to change the visualization according to a country of his/her choice. When the application starts, by default, the global information is displayed.
+![image](https://github.com/Seb70197/Weather_Prediction/assets/100205998/daa7ae3a-f437-4d6e-92ac-5864b7f08d16)
+
 
 The bottom section, after the visualization, is providing the user the possibility to enter 3 features
 - Year of his choice (e.g. 2023)
@@ -53,6 +69,7 @@ The bottom section, after the visualization, is providing the user the possibili
 - Difference in population : Enter a whole number as an increase of population of the user's choice.
 
 By Clicking on "Submit", once the selection is done, the user get a prediction of the 3 mains temperatures information, appearing only if the user enter some values.
+![image](https://github.com/Seb70197/Weather_Prediction/assets/100205998/4c6046bb-32de-4a5f-9b07-42b05f96bf5d)
 
 ## CONTENT OF THE APPLICATION 
 - Data Folder : Contains the data used and data preparation for the machine learning model, it saves as well the cleaned data into a database present within the application.
