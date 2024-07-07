@@ -48,6 +48,14 @@ You have here 2 possibilities :
    
 ![image](https://github.com/Seb70197/Weather_Prediction/assets/100205998/19f07995-b396-46f6-868f-a0840aa62024)
 
+Once the download of the Data is done, start the program as follow :
+Installation options 1 : You downloaded only the parquet file 
+
+Run the following scripts in your console : data_prep.py, weather_model.py, run.py 
+
+Installation options 2 : You downloaded directly the weather_data.db and saved it under the "Data" folder
+
+Run the following scripts in your console : weather_model.py, run.py 
 
 
 ## UTILIZATION
