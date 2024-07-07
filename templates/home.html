@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Weather Predictions</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='layout.css') }}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+
+<body>
+<header>
+    <img class="header_img" src="https://pngimg.com/uploads/globe/globe_PNG100087.png">
+    <div class="header_main_title">
+        <div class="header_title">Weather Evolution Prediction</div>
+        <div class="header_para">Analyzing Global Temperatures and CO2 evolution to predict future Temperatures</div>
+    </div>
+    
+
+</header>
+
+<br>
+
+<br>
+<br>
+
+<div class="sub_title">
+
+    Graphical Visualization of the main factors used for our Machine Learning Model
+
+    </div>
+</div>
+
+
+
+<div class="block_form_main">
+    <form  action="/index" method="get">
+        <div class="country_select">
+            <label for="country">Select a country to display the visualization:</label>
+            <select class="country_list" id="country" name="country">
+                {% for country in countries %}
+                    <option value="{{ country }}" {% if country == selected_country %}selected{% endif %}>{{ country }}</option>
+                {% endfor %}
+            </select>
+            
+        </div>
+        <div class="submit_button">
+            <input class="submit_button" type="submit" value="Submit" >
+            
+        </div>           
+        
+    </form>
+</div>
+
+
+
+<div class="sub_title">Weather Data Visualization</div>
+
+<div class="test1">
+
+    {% for id in ids %}
+        <div id="{{id}}"></div>
+    {% endfor %}
+</div>
+
+<script>
+    var graphs = {{ graphJSON | safe }};
+    for (var i in graphs) {
+        Plotly.newPlot('graph-' + i, graphs[i].data, graphs[i].layout);
+    }
+</script>
+
+<div class="prediction_title">
+
+    Model Prediction
+
+    </div>
+</div>
+
+<div class="block_form_prediction"> Enter a Year (After 2022), an increase of CO2 in % and the additional population:
+    Once Done, click on Submit
+    <form action="/index" method="get">
+        
+        <div class="block_form">
+            <div class="year">
+                <div class="labels">
+                    <label for="year">Year:</label>
+                </div>
+                
+                <div class="input">
+                    <input class="input" type="number" id="year" name="year" value="{{ request.args.get('year', '') }}">
+                </div>
+            </div>
+            
+            <div class="co2">
+                <div class="labels">
+                    <label for="co2">CO2 (% increase):</label>
+                </div>
+                <div class="input">
+                    <input class="input" type="number" id="co2" name="co2" step="0.1" value="{{ request.args.get('co2', '') }}">
+                </div>
+            </div>    
+            
+            <div class="pop">
+                <div class="labels">
+                    <label for="pop_diff">Population Difference:</label>
+                </div>
+                
+                <div class="input">
+                    <input class="input" type="number" id="pop_diff" name="pop_diff" step="0.1" value="{{ request.args.get('pop_diff', '') }}">
+                </div>
+            </div>
+            
+            
+            <div class="submit_button">
+                <input class="submit_button" type="submit" value="Submit" >
+            </div>           
+
+
+        </div>
+        
+    </form>
+</div>
+
+<div class="prediction_title">
+
+    Prediction Results
+
+    </div>
+
+<div class="prediction_results">
+    {% if predictions is not none %}
+    <div class="block_results">
+        <div class="average_block">
+            <div class="title">Avg Predicted Temp.</div>
+            <div class="results">{{ predictions[0]}}</div>
+
+        </div>
+
+        <div class="min_block">
+            <div class="title">Min. Predicted Temp.</div>
+            <div class="results">{{ predictions[1]}}</div>
+
+        </div>
+
+        <div class="max_block">
+            <div class="title">Max. Predicted Temp.</div>
+            <div class="results">{{ predictions[2]}}</div>
+
+        </div>
+    </div>
+        <div></div>
+    {% endif %}
+</div>
+
+
+</body>
+</html>
