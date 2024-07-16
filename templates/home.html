@@ -104,13 +104,43 @@
                 </div>
             </div>    
             
-            <div class="pop">
+            <div class="pop_diff">
                 <div class="labels">
                     <label for="pop_diff">Population Difference:</label>
                 </div>
                 
                 <div class="input">
                     <input class="input" type="number" id="pop_diff" name="pop_diff" step="0.1" value="{{ request.args.get('pop_diff', '') }}">
+                </div>
+            </div>
+
+            <!-- <div class="pop">
+                <div class="labels">
+                    <label for="pop">Population :</label>
+                </div>
+                
+                <div class="input">
+                    <input class="input" type="number" id="pop" name="pop" step="0.1" value="{{ request.args.get('pop', '') }}">
+                </div>
+            </div>
+
+            <div class="co2_growth">
+                <div class="labels">
+                    <label for="co2_growth">Population :</label>
+                </div>
+                
+                <div class="input">
+                    <input class="input" type="number" id="co2_growth" name="co2_growth" step="0.1" value="{{ request.args.get('co2_growth', '') }}">
+                </div>
+            </div> -->
+
+            <div class="prec_mm">
+                <div class="labels">
+                    <label for="prec_mm">Precipitation in Milimeters :</label>
+                </div>
+                
+                <div class="input">
+                    <input class="input" type="number" id="prec_mm" name="prec_mm" step="0.1" value="{{ request.args.get('prec_mm', '') }}">
                 </div>
             </div>
             
