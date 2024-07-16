@@ -22,7 +22,7 @@ def load_data(database_filepath):
     #read the data from the database and create the relevant dataframe
     df = pd.read_sql_query('SELECT * FROM weather_data_yearly', engine)
     
-    x= df[['year','co2','population_diff']]
+    x= df[['year','co2','population_diff','population','co2_growth_prct','precipitation_mm']]
     y= df[['avg_temp_c','min_temp_c','max_temp_c']]
     
 
@@ -33,14 +33,13 @@ def model_pipeline():
     
     Return : The model used within the WebApplication"""
 
-    pipeline = Pipeline([('clf', RandomForestRegressor(random_state=0))
+    #Creating our data pipeline
+    pipeline = Pipeline([('clf', RandomForestRegressor(random_state=42))
                  ])
-
-    #pipeline parameters to apply to model
+    #Setting the parameters to look upon 
     parameters = {
-        'clf__max_features':[1,2],
-        'clf__n_estimators':[100,150,200,250,300],
-        'clf__n_jobs':[1,5,10,15,20,25]
+        'clf__max_features':[1,2,3,4,5,6,7],
+        'clf__n_estimators':[1,50,100,200,250,300],
     }
 
     #take best parameters for our model
@@ -61,7 +60,7 @@ def main():
         
     x, y = load_data('data\weather_data.db')
     x['co2'].fillna(0,inplace=True)    
-    X_train, X_test, y_train, y_test = train_test_split(x, y, random_state=0, test_size=0.2)
+    X_train, X_test, y_train, y_test = train_test_split(x, y, random_state=42, test_size=0.3)
 
     print('Building Model')
     model = model_pipeline()
