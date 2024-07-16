@@ -78,7 +78,8 @@ The bottom section, after the visualization, is providing the user the possibili
 - Difference in population : Enter a whole number as an increase of population of the user's choice.
 
 By Clicking on "Submit", once the selection is done, the user get a prediction of the 3 mains temperatures information, appearing only if the user enter some values.
-![image](https://github.com/Seb70197/Weather_Prediction/assets/100205998/4c6046bb-32de-4a5f-9b07-42b05f96bf5d)
+![image](https://github.com/user-attachments/assets/51c7f3d4-6fcc-4947-8f4f-31b6c9ec55bd)
+
 
 ## CONTENT OF THE APPLICATION 
 - Data Folder : Contains the data used and data preparation for the machine learning model, it saves as well the cleaned data into a database present within the application.
@@ -87,6 +88,6 @@ By Clicking on "Submit", once the selection is done, the user get a prediction o
 - templates : contains the HTML page rendered once the application is launched
 
 The main folders contains as well :
-- A jupyter Notebook where some analyze were done during the application creation
+- A jupyter Notebook where some analyze were done during the application creation and explain the way to the model prediction
 - the run.py file which should be use to start the program
-- The weather_data.db created after data clean-up !
+
