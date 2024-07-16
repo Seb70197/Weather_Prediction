@@ -156,22 +156,31 @@ def index():
     ids = ["graph-{}".format(i) for i, _ in enumerate(graphs)]
     graphJSON = json.dumps(graphs, cls=plotly.utils.PlotlyJSONEncoder)
     
+    #get the user input from the web application
     year = request.args.get('year')
     co2 = request.args.get('co2')
     pop_diff = request.args.get('pop_diff')
+    prec_mm = request.args.get('prec_mm')
+
 
     #Convert parameters to appropriate types
     year = int(year) if year else None
     co2 = float(co2) if co2 else None
     pop_diff = float(pop_diff) if pop_diff else None
+    prec_mm = float(prec_mm) if prec_mm else None
 
+    #Calculate information for prediction definition
     max_year = df1[df1['year'] == df1['year'].max()]['year'].unique()[0]
     sum_co2 = df1[df1['year']==max_year]['co2'].sum()
+    sum_pop = df1[df1['year']==max_year]['population'].sum()
+
+    #weather_data_yearly[['year','co2','population_diff','co2_growth_prct','precipitation_mm','population']]
 
     #If no prediction is available, do not show results. If yes, proceed with calculation
     prediction = None
     if year is not None and co2 is not None and pop_diff is not None:
-        prediction = model.predict(np.array([[year, sum_co2 * (co2 / 100), pop_diff]]))[0]
+        #Use the User Input in order to define the prediction
+        prediction = model.predict(np.array([[year, sum_co2+(sum_co2 * (co2 / 100)), pop_diff, (co2*100), prec_mm, sum_pop+pop_diff ]]))[0]
         #Split the prediction from the model to 3 values rounded to 2 decimals
         prediction = [round(prediction[0],2), round(prediction[1],2), round(prediction[2],2)]
 
